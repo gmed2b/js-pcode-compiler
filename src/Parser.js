@@ -106,6 +106,8 @@ export class Parser {
         return this.WriteStatement();
       case "DO":
         return this.DoWhileStatement();
+      case "IDENTIFIER":
+        return this.AssignmentStatement();
     }
     throw new SyntaxError(
       `Unexpected statement: \`${this._lookahead.value}\` at character ${this._tokenizer._cursor}.`
@@ -210,6 +212,23 @@ export class Parser {
       type: "DoWhileStatement",
       body,
       condition: expression,
+    };
+  }
+
+  /**
+   * AssignmentStatement
+   *  | Identifier ASSIGNMENT_OPERATOR Expression ';'
+   */
+  AssignmentStatement() {
+    const identifier = this.Identifier();
+    this._eat("ASSIGNMENT_OPERATOR");
+    const expression = this.Expression();
+    this._eat(";");
+
+    return {
+      type: "AssignmentStatement",
+      identifier,
+      expression,
     };
   }
 

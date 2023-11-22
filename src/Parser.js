@@ -93,7 +93,9 @@ export class Parser {
    * Statement
    *  | VariableStatement
    *  | ReadStatement
+   *  | WriteStatement
    *  | DoWhileStatement
+   *  | AssignmentStatement
    *  ;
    */
   Statement() {
@@ -276,11 +278,11 @@ export class Parser {
    */
   Identifier() {
     const name = this._eat("IDENTIFIER").value;
-    return name;
-    // return {
-    //   type: "Identifier",
-    //   name,
-    // };
+    // return name;
+    return {
+      type: "Identifier",
+      name,
+    };
   }
 
   /**

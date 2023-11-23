@@ -10,6 +10,7 @@ export class Parser {
    */
   constructor() {
     this._string = "";
+    this._varCount = 0;
     this._lookahead = null;
     this._tokenizer = new Tokenizer();
   }
@@ -70,6 +71,7 @@ export class Parser {
     return {
       type: "Program",
       name: program_name,
+      vars: this.VariableStatement(),
       body: this.StatementList(),
     };
   }
@@ -91,7 +93,6 @@ export class Parser {
 
   /**
    * Statement
-   *  | VariableStatement
    *  | ReadStatement
    *  | WriteStatement
    *  | DoWhileStatement
@@ -100,8 +101,6 @@ export class Parser {
    */
   Statement() {
     switch (this._lookahead.type) {
-      case "VAR":
-        return this.VariableStatement();
       case "READ":
         return this.ReadStatement();
       case "WRITE":
@@ -156,6 +155,7 @@ export class Parser {
     return {
       type: "VariableDeclaration",
       identifier,
+      // address: this._varCount++,
     };
   }
 

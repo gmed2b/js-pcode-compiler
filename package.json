@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "node __tests__/run.js"
+    "exex": "node __tests__/run.js",
+    "compile": "node __tests__/compile.js"
   },
   "keywords": [],
   "author": "",

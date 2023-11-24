@@ -1,0 +1,9 @@
+program sum;
+var a,b;
+begin
+do begin
+  read(a);
+  b := a + b;
+end while (a != 0);
+write(b);
+end

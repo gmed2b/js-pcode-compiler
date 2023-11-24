@@ -1,0 +1,9 @@
+program countdown15;
+var a;
+begin
+a := 15;
+do begin
+  write(a);
+  a := a - 1;
+end while (a != 0);
+end

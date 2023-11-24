@@ -8,18 +8,15 @@ export class Translator {
 
   translate(ast) {
     this._ast = ast;
-    this._vars = this.instanciateVars();
-
+    this.instanciateVars();
     this.translateProgram();
     return this._pcode;
   }
 
   instanciateVars() {
-    const vars = new Set();
-    for (const declaration of this._ast.vars.declarations) {
-      vars.add(declaration.identifier.name);
+    for (const { identifier } of this._ast.vars.declarations) {
+      this._vars.push(identifier.name);
     }
-    return [...vars];
   }
 
   translateProgram() {
@@ -64,8 +61,7 @@ export class Translator {
   }
 
   translateWriteStatement(statement) {
-    this.insertInstruction("LDA", this._getVariableIndex(statement.identifier));
-    this.insertInstruction("LDV");
+    this.translateExpression(statement.expression);
     this.insertInstruction("PRN");
   }
 

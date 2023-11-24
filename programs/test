@@ -1,0 +1,10 @@
+program test;
+var a,b,c;
+begin
+  read(a);
+  read(b);
+  c := a + b;
+  write(c);
+  write(c + a + b);
+  write(999);
+end

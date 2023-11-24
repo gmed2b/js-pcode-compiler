@@ -179,19 +179,19 @@ export class Parser {
 
   /**
    * WriteStatement
-   *  | 'write' '(' Identifier ')' ';'
+   *  | 'write' '(' Expression ')' ';'
    *  ;
    */
   WriteStatement() {
     this._eat("WRITE");
     this._eat("(");
-    const identifier = this.Identifier();
+    let expression = this.Expression();
     this._eat(")");
     this._eat(";");
 
     return {
       type: "WriteStatement",
-      identifier,
+      expression,
     };
   }
 

@@ -3,7 +3,6 @@ export class Translator {
     this._ast = null;
     this._pcode = [];
     this._vars = [];
-    this._jumpStack = [];
   }
 
   translate(ast) {
@@ -67,7 +66,7 @@ export class Translator {
 
   translateDoWhileStatement(statement) {
     // Store program counter.
-    this._jumpStack.push(this._pcode.length);
+    const head = this._pcode.length;
     // Translate body.
     for (const stmt of statement.body) {
       this.translateStatement(stmt);
@@ -75,7 +74,7 @@ export class Translator {
     // Load condition.
     this.translateExpression(statement.condition);
     // Jump back to body if head is 0.
-    this.insertInstruction("BZE", this._jumpStack.pop());
+    this.insertInstruction("BZE", head);
   }
 
   translateAssignmentStatement(statement) {
@@ -121,6 +120,21 @@ export class Translator {
         break;
       case "!=":
         this.insertInstruction("EQL"); // TODO: understand why this is EQL
+        break;
+      case "=":
+        this.insertInstruction("EQL");
+        break;
+      case ">":
+        this.insertInstruction("GTR");
+        break;
+      case "<":
+        this.insertInstruction("LSS");
+        break;
+      case ">=":
+        this.insertInstruction("GEQ");
+        break;
+      case "<=":
+        this.insertInstruction("LEQ");
         break;
       default:
         throw new Error(`Unknown operator: ${expression.operator}`);

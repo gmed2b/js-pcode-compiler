@@ -5,6 +5,11 @@ export class Analyser {
     this._identifiers = [];
   }
 
+  /**
+   * Analyse the AST and return the symbol table.
+   * @param ast a JSON object representing the AST
+   * @returns a symbol table
+   */
   analyse(ast) {
     this._ast = ast;
 
@@ -23,6 +28,12 @@ export class Analyser {
     return this._symbolTable;
   }
 
+  /**
+   * Find all objects in the AST of a given type.
+   * @param obj - object to search into
+   * @param type - key to search for
+   * @param array - array to push the found objects into
+   */
   findAllObjectBy(obj, type, array) {
     if (obj.type === type) {
       if (type === "VariableDeclaration") {

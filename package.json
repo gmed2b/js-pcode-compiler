@@ -1,14 +1,12 @@
 {
-  "name": "letter-rdp",
+  "name": "js-pcode-compiler",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple pcode compiler and interpreter in JavaScript.",
   "type": "module",
   "scripts": {
     "exex": "node __tests__/run.js",
     "compile": "node __tests__/compile.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Mehdi Ghoulam<mehdi@gelk.fr>",
   "license": "ISC"
 }

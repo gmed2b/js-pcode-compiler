@@ -16,23 +16,6 @@ export class Parser {
   }
 
   /**
-   * Parses a string into AST (abstract syntax tree).
-   */
-  parse(string) {
-    this._string = string;
-    this._tokenizer.init(string);
-
-    // Prime the tokenizer to obtain the first token.
-    // token which is our lookahead. The lookahead is
-    // used for predictive parsing.
-    this._lookahead = this._tokenizer.getNextToken();
-
-    // Start recursive descent parsing from the main
-    // entry point, the Program.
-    return this.Program();
-  }
-
-  /**
    * Expects a token of a given type.
    */
   _eat(tokenType) {
@@ -54,6 +37,23 @@ export class Parser {
     this._lookahead = this._tokenizer.getNextToken();
 
     return token;
+  }
+
+  /**
+   * Parses a string into AST (abstract syntax tree).
+   */
+  parse(string) {
+    this._string = string;
+    this._tokenizer.init(string);
+
+    // Prime the tokenizer to obtain the first token.
+    // token which is our lookahead. The lookahead is
+    // used for predictive parsing.
+    this._lookahead = this._tokenizer.getNextToken();
+
+    // Start recursive descent parsing from the main
+    // entry point, the Program.
+    return this.Program();
   }
 
   /**

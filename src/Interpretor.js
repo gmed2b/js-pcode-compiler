@@ -5,12 +5,19 @@ import * as readline from "node:readline/promises";
 const rl = readline.createInterface({ input, output });
 
 export class Interpretor {
+  /**
+   * Initializes the interpretor.
+   */
   constructor() {
     this._mem = [];
     this._pcode = [];
     this._pc = 0;
   }
 
+  /**
+   * Loads the pcode from a file.
+   * @param filename
+   */
   loader(filename) {
     // Open file
     const fileContent = fs.readFileSync(filename, "utf-8");
@@ -21,6 +28,10 @@ export class Interpretor {
     console.log("Instructions loaded.\n");
   }
 
+  /**
+   * Interprets the pcode operations.
+   * @param verbose - boolean flag to print instructions
+   */
   async interpretor(verbose = false) {
     let a, b, addr, value;
 
@@ -28,6 +39,7 @@ export class Interpretor {
     while (this._pc < this._pcode.length) {
       // Get current instruction
       const instruction = this._pcode[this._pc++];
+
       if (verbose) console.log(instruction);
 
       // Split instruction

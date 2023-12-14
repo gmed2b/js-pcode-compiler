@@ -5,6 +5,11 @@ export class Translator {
     this._vars = [];
   }
 
+  /**
+   * Translate the AST into pcode.
+   * @param ast - a JSON object representing the AST
+   * @returns an array of pcode instructions
+   */
   translate(ast) {
     this._ast = ast;
     this.instanciateVars();
@@ -12,22 +17,34 @@ export class Translator {
     return this._pcode;
   }
 
+  /**
+   * Instanciate all variables.
+   */
   instanciateVars() {
     for (const { identifier } of this._ast.vars.declarations) {
       this._vars.push(identifier.name);
     }
   }
 
+  /**
+   * Translate the program.
+   */
   translateProgram() {
     this.initializeVars();
     this.translateBody();
   }
 
+  /**
+   * Initialize number of variables.
+   */
   initializeVars() {
     const count = this._vars.length;
     this.insertInstruction("INT", count);
   }
 
+  /**
+   * Translate the body of the program.
+   */
   translateBody() {
     for (const statement of this._ast.body) {
       this.translateStatement(statement);
@@ -35,6 +52,10 @@ export class Translator {
     this.insertInstruction("HLT");
   }
 
+  /**
+   * Translate a statement.
+   * @param statement - a statement object
+   */
   translateStatement(statement) {
     switch (statement.type) {
       case "ReadStatement":
@@ -150,7 +171,6 @@ export class Translator {
     this.insertInstruction("LDI", expression.value);
   }
 
-  // create a function `insertInstruction(ins, arg?)`
   insertInstruction(ins, arg = null) {
     if (arg == null) {
       this._pcode.push(ins);

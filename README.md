@@ -29,3 +29,32 @@ Le projet peut être divisé en 4 parties :
 - `Tokenizer` : Contient les règles de grammaire pour le langage.
 - `Translator` : Traduit l'AST en PCODE.
 - `Interpreter` : Interprète le PCODE.
+
+## Captures d'écran
+
+#### Programme `sum` avec notre langage
+
+Programme qui permet de calculer la somme des nombres entrés par l'utilisateur tant que le nombre entré est différent de 0.
+
+<img src="https://gelk.fr/static/compiler-screenshots/sum-program.png" alt="program sum" width="250"/>
+
+#### Commande d'exécution
+
+On peut voir que le programme `sum` a été compilé avec l'option `-v` pour afficher les informations de débogage.
+
+<img src="https://gelk.fr/static/compiler-screenshots/compile-cmd.png" alt="program sum"/>
+
+#### Sortie de la commande d'exécution
+
+Avec l'option `-v`, on retrouve en sortie l'arbre de syntaxe abstraite (AST) du programme.
+
+<img src="https://gelk.fr/static/compiler-screenshots/ast.png" alt="program sum"/>
+<img src="https://gelk.fr/static/compiler-screenshots/compile-output.png" alt="program sum"/>
+
+#### Exécution du programme compilé
+
+Le programme compilé est exécuté et interprété.
+L'utilisateur à entré les nombres 3, 3, 3 et 2. Puis il a entré 0 pour terminer le programme.
+On peut voir que la somme des nombres entrés est bien égale à 11.
+
+<img src="https://gelk.fr/static/compiler-screenshots/execution.png" alt="program sum"/>

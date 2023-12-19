@@ -37,6 +37,10 @@ try {
   const pcodeString = pcode.join("\n");
 
   // Save file in root directory/{program_name}.pcode
+  // Create the out directory if it doesn't exist
+  if (!fs.existsSync("./out")) {
+    fs.mkdirSync("./out");
+  }
   const filePath = fs.realpathSync(".") + `/out/${program_name}.pcode`;
 
   // Write the pcode string to the file

@@ -17,9 +17,13 @@ Pour utiliser le Compilateur et Interpréteur, suivez ces étapes :
 Vous disposez d'une liste de programmes d'exemple dans le dossier `programs/`.
 Le programme compilé sera généré dans le dossier `out/`. Le nom du fichier sera le même que celui du fichier d'entrée, mais avec l'extension `.pcode`.
 
+Exemple : `node compile.js programs/sum`
+
 3. Exécutez le fichier compilé : `node exec.js [-v | --verbose] <pcode_file>`
 
 Les fichiers compilés se trouvent dans le dossier `out/`.
+
+Exemple : `node exec.js out/sum.pcode`
 
 ## Structure de Fichiers
 

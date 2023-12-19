@@ -4,7 +4,7 @@ import * as readline from "node:readline/promises";
 
 const rl = readline.createInterface({ input, output });
 
-export class Interpretor {
+export class Interpreter {
   /**
    * Initializes the interpretor.
    */

@@ -5,6 +5,6 @@ begin
   read(b);
   c := a + b;
   write(c);
-  write(c + a + b);
-  write(999);
+  write(c * a + b);
+  write(5 + (3*2));
 end

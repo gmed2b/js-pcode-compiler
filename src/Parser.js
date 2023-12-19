@@ -263,12 +263,19 @@ export class Parser {
    */
   Operand() {
     switch (this._lookahead.type) {
+      case "(":
+        this._eat("(");
+        const expression = this.Expression();
+        this._eat(")");
+        return expression;
       case "IDENTIFIER":
         return this.Identifier();
       case "NUMBER":
         return this.Literal();
     }
-    throw new SyntaxError(`Operand: unexpected operand production.`);
+    throw new SyntaxError(
+      `Operand: unexpected operand production. ${this._lookahead.type}`
+    );
   }
 
   /**

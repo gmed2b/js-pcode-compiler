@@ -11,9 +11,12 @@ try {
     throw new Error("Usage: node compile.js [-v | --verbose] <program_file>");
   }
   // check for verbose flag
-  if (args[0] !== "-v" && args[0] !== "--verbose") {
-    throw new Error("Unknown flag: " + args[0]);
+  if (args.length > 2) {
+    if (args[0] !== "-v" && args[0] !== "--verbose") {
+      throw new Error("Unknown flag: " + args[0]);
+    }
   }
+
   const verbose = args[0] === "-v" || args[0] === "--verbose";
   const filename = args[verbose ? 1 : 0];
   const fileContent = fs.readFileSync(filename, "utf-8");

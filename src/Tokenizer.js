@@ -16,7 +16,7 @@ const Spec = [
   // --------------------
   // Operators:
   [/^[+\-]/, "ADDITIVE_OPERATOR"],
-  [/^[*\\]/, "MULTIPLICATIVE_OPERATOR"],
+  [/^[*\/]/, "MULTIPLICATIVE_OPERATOR"],
   [/^:=/, "ASSIGNMENT_OPERATOR"],
   [/^=/, "EQL_OPERATOR"],
   [/^!=/, "NEQ_OPERATOR"],
